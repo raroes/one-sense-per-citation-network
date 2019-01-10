@@ -19,9 +19,9 @@
 
 #### Then one of these scripts:
 
-### * *link_citing_articles.py*: for the first degree network
-### * *link_citing_articles.py pmid_citations_shuffled.txt*: for the shuffled network
-### * *link_citing_articles.py ./pmid_citations_second_degree.txt*: for the second degree network
+### * *connect_citing_articles.py*: for the first degree network
+### * *connect_citing_articles.py pmid_citations_shuffled.txt*: for the shuffled network
+### * *connect_citing_articles.py ./pmid_citations_second_degree.txt*: for the second degree network
 
 #### Finally:
 
