@@ -30,3 +30,12 @@
 ### * *add_title_and_abstract.py*
 
 ### * *semantic_permanence_names.py*: mention ambiguity analysis
+
+#### Additional files:
+
+### * *download_citations.sh*: download citations from the Open Citation Index
+### * *download_gene2pubmed.sh*: download the gene2pubmed database
+### * *download_goa.sh*: download the Gene Ontology Annotation database
+### * *download_ncbi_gene.sh*: download the NCBI Gene database
+### * *download_pmid_doi_mapping.sh*: download the PMID-PMC-DOI mappings from EBI
+### * *download_uniprot.sh*: download the UniProtKB annotations

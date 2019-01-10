@@ -2,8 +2,8 @@
 
 # this script simply adds the title and abstract corresponding to each PMID in the input file
 
-input_file = "linked_pmid_annotations.txt"
-output_file = "linked_pmid_annotations_title_abstract.txt"
+input_file = "connected_pmid_annotations.txt"
+output_file = "connected_pmid_annotations_title_abstract.txt"
 title_abstract_file = "./data/pmid_title_abstract.txt"
 
 f_in = open(input_file, "r")
