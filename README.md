@@ -2,7 +2,7 @@
 
 ## Scripts to analyze the meaning of ambiguous names across citations
 
-### For the main analysis the order of execution of the scripts is the following, first:
+#### For the main analysis the order of execution of the scripts is the following, first:
 
 ### * *read_ambiguous_gene_annotations_synonyms.py*
 
