@@ -15,7 +15,7 @@
 
 #### Then:
 
-### * *filter_pubmed_records_with_annotation.py*
+### * *filter_records_with_ambiguous_annotation.py*
 
 #### Then one of these scripts:
 
