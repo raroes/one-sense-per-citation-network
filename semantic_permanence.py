@@ -2,9 +2,9 @@
 
 # this script performs the ambiguous annotation analysis
 
-input_file = "linked_pmid_annotations.txt"
+input_file = "connected_pmid_annotations.txt"
 ambiguous_annotations_file = "ambiguous_names_and_annotations.txt"
-output_file = "linked_pmid_annotations_ambiguous.txt" 
+output_file = "connected_pmid_annotations_ambiguous.txt" 
 results_file = "total_annotations_per_match_type.txt"
 
 # first it reads the annotation pairs that are considered to be ambiguous
