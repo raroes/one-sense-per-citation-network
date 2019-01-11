@@ -33,6 +33,7 @@
 
 #### Additional files:
 
+### * *create_second_degree_network.py*: creates the second-degree citation network
 ### * *download_citations.sh*: download citations from the Open Citation Index
 ### * *download_gene2pubmed.sh*: download the gene2pubmed database
 ### * *download_goa.sh*: download the Gene Ontology Annotation database
