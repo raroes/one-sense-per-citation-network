@@ -48,7 +48,7 @@ for line in f:
                     synonym_to_annotation_id[annotation_synonym] = [annotation_id]
                     total_synonyms += 1
 
-print("Total annotation: " + str(total_annotations))
+print("Total annotations: " + str(total_annotations))
 print("Total synonyms: " + str(total_synonyms))
 
 # Write an output file with the data read in the previous section

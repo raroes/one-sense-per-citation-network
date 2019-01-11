@@ -4,50 +4,49 @@
 # and identifies those names that are ambiguous because they share at least a synonym
 
 # UMLS-MeSH file
-input_file = "./data/Homo_sapiens.gene_info.gz"
+input_file = "./data/UMLS_MESH.txt"
 # list of ambiguous names and synonyms
 output_file = "ambiguous_names_and_annotations.txt"
 # statistics on number of synonyms per MeSH term
 results_file = "synonyms_per_mesh_term.txt"
 
 import re 
-import gzip
 
-f = gzip.open(input_file, 'rt')
+f = open(input_file, 'rt')
 
 # read MeSH IDs, names and synonyms
 annotation_strings = []
+annotation_ids = []
 synonym_to_annotation_id = {}
 total_annotations = 0
 total_synonyms = 0
+f.readline()
+f.readline()
 for line in f:
     line = line[:-1]
     data = line.split("\t")
-    # NCBI Gene data of interest
-    species = data[0]
-    annotation_id = data[1]
-    annotation_name = data[2]
-    annotation_synonyms = data[4].split("|")
-    annotation_synonyms.append(annotation_name)
-    # only information related to humans is of interest (species number 9606)
-    if species == "9606":
-        total_annotations += 1
-        for annotation_synonym in annotation_synonyms:
-            # an annotation synonym needs to include at least a letter
-            if re.search("[a-zA-Z]", annotation_synonym):
-                # annotation synonyms are considered case-insensitively so they are changed to lower case
-                annotation_synonym = annotation_synonym.lower()
-                # check if annotation synonym has already been seen
-                if annotation_synonym in synonym_to_annotation_id.keys():
-                    # if so, then add the annotation ID to the list of annotation IDs associated to that synonym
-                    if annotation_id not in synonym_to_annotation_id[annotation_synonym]:
-                        synonym_to_annotation_id[annotation_synonym].append(annotation_id)
-                else:
-                    # if not, create a new entry for the synonym
-                    synonym_to_annotation_id[annotation_synonym] = [annotation_id]
-                    total_synonyms += 1
+    # UMLS data of interest
+    if len(data) > 11:
+        annotation_id = data[13]
+        annotation_synonym = data[14]
+        if annotation_id not in annotation_ids:
+            annotation_ids.append(annotation_id)
+            total_annotations += 1
+        # an annotation synonym needs to include at least a letter
+        if re.search("[a-zA-Z]", annotation_synonym):
+            # annotation synonyms are considered case-insensitively so they are changed to lower case
+            annotation_synonym = annotation_synonym.lower()
+            # check if annotation synonym has already been seen
+            if annotation_synonym in synonym_to_annotation_id.keys():
+                # if so, then add the annotation ID to the list of annotation IDs associated to that synonym
+                if annotation_id not in synonym_to_annotation_id[annotation_synonym]:
+                    synonym_to_annotation_id[annotation_synonym].append(annotation_id)
+            else:
+                # if not, create a new entry for the synonym
+                synonym_to_annotation_id[annotation_synonym] = [annotation_id]
+                total_synonyms += 1
 
-print("Total annotation: " + str(total_annotations))
+print("Total annotations: " + str(total_annotations))
 print("Total synonyms: " + str(total_synonyms))
 
 # Write an output file with the data read in the previous section
