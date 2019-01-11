@@ -33,10 +33,10 @@
 
 #### Additional files:
 
+### * *create_second_degree_network.py*: creates the second-degree citation network
 ### * *download_citations.sh*: download citations from the Open Citation Index
 ### * *download_gene2pubmed.sh*: download the gene2pubmed database
 ### * *download_goa.sh*: download the Gene Ontology Annotation database
 ### * *download_ncbi_gene.sh*: download the NCBI Gene database
 ### * *download_pmid_doi_mapping.sh*: download the PMID-PMC-DOI mappings from EBI
-### * *create_second_degree_network.py*: creates the second-degree citation network
 ### * *download_uniprot.sh*: download the UniProtKB annotations
