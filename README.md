@@ -42,3 +42,4 @@
 ### * *download_pmid_doi_mapping.sh*: download the PMID-PMC-DOI mappings from EBI
 ### * *download_uniprot.sh*: download the UniProtKB annotations
 ### * *map_doi_citations_to_pmid*: map citation pairs in DOI format to PMID using the EBI mapping data
+### * *top_mismatching_gene_annotations*: lists the gene annotations associated to most mismatching pairs
