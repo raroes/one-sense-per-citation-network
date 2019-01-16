@@ -73,4 +73,4 @@ for annotation_pair in sorted_mismatch_counts[0:10]:
     annotation_id2 = annotations[1]
     annotation_name2 = name_id[annotation_id2]
     overlapping_synonyms = list(set(name_synonyms[annotation_id1]) & set(name_synonyms[annotation_id2]))
-    print(annotation_name1 + "\t" + annotation_id1 + "\t" + str(match_counts[annotation_id1]) + "\t" + annotation_name2 + "\t" + annotation_id2 + "\t" + str(mismatch_counts[annotation_pair]) + "\t" + str(match_counts[annotation_id2]) + "\t" + ",".join(overlapping_synonyms))
+    print(annotation_name1 + "\t" + annotation_id1 + "\t" + str(match_counts[annotation_id1]) + "\t" + annotation_name2 + "\t" + annotation_id2 + "\t" + str(match_counts[annotation_id2]) + "\t" + str(mismatch_counts[annotation_pair]) + "\t" + ",".join(overlapping_synonyms))
