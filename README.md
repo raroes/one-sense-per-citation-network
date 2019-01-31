@@ -11,7 +11,7 @@
 ### * *read_gene_annotations_uniprot.py*
 ### * *read_gene_annotations_gene2pubmed.py*
 ### * *read_gene_annotations_goa.py*
-### * *read_gene_annotations_bc2.py*
+### * *read_mesh_annotations.py*
 
 #### Then:
 
