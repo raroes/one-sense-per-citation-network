@@ -4,7 +4,7 @@
 
 #### For the main analysis the order of execution of the scripts is the following, first:
 
-### * *read_ambiguous_gene_annotations_synonyms.py*
+### * *read_ambiguous_gene_annotation_synonyms.py*
 
 #### Then one of these scripts:
 
