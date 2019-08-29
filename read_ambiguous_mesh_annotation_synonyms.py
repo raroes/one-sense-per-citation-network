@@ -23,6 +23,7 @@ total_annotations = 0
 total_synonyms = 0
 annotation_count = {}
 mesh_id_annotation_id = {}
+synonyms_from_mesh = 0
 for line in f:
     line = line[:-1]
     data = line.split("|")
@@ -32,6 +33,7 @@ for line in f:
     if ontology == "MSH":
         mesh_id = data[13]
         mesh_id_annotation_id[annotation_id] = mesh_id
+        synonyms_from_mesh += 1
     # an annotation synonym needs to include at least a letter
     if re.search("[a-zA-Z]", annotation_synonym):
         annotation_dict[annotation_id] = 1
@@ -49,6 +51,7 @@ for line in f:
 
 print("Total annotations: " + str(len(annotation_dict.keys())))
 print("Total synonyms: " + str(total_synonyms))
+print("Total synonyms coming from MeSH: " + str(synonyms_from_mesh))
 
 # Write an output file with the data read in the previous section
 f_out = open(output_file, "w")
@@ -70,8 +73,9 @@ for annotation_synonym in synonym_to_annotation_id.keys():
         for annotation_id in synonym_to_annotation_id[annotation_synonym]:
             if annotation_id in mesh_id_annotation_id.keys():
                 mesh_id = mesh_id_annotation_id[annotation_id]
-                id_list.append(mesh_id)
-        if len(id_list) > 0:
+                if mesh_id not in id_list:
+                    id_list.append(mesh_id)
+        if len(id_list) > 1:
             f_out.write(annotation_synonym + "\t" + "|".join(id_list) + "\n")
             count_ambiguous+=1
             # add the annotation IDs to a list of ambiguous annotation IDs

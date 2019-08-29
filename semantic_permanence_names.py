@@ -81,7 +81,7 @@ for line in f_in:
                 found = 0
                 for name in names:
                     if found == 0:
-                        pattern = "[^\&^0-9^a-z^A-Z]" + name.lower() + "[^\&^0-9^a-z^A-Z]"
+                        pattern = "\\b" + name.lower() + "\\b"
                         if re.search(pattern, " " + title1.lower() + " ") or re.search(pattern, " " + abstract1.lower() + " "):
                             if re.search(pattern, "  " + title2.lower() + " ") or re.search(pattern, "  " + abstract2.lower() + " "):
                                 found = 1
@@ -97,7 +97,7 @@ for line in f_in:
                         found = 0
                         for name in names1:
                             if found == 0 and name in names2:
-                                pattern = "[^\&^0-9^a-z^A-Z]" + name.lower() + "[^\&^0-9^a-z^A-Z]"
+                                pattern = "\\b" + name.lower() + "\\b"
                                 if re.search(pattern, " " + title1.lower() + " ") or re.search(pattern, " " + abstract1.lower() + " "):
                                     if re.search(pattern, "  " + title2.lower() + " ") or re.search(pattern, "  " + abstract2.lower() + " "):
                                         found = 1
