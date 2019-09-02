@@ -9,7 +9,7 @@ output_file = "pmid_ambiguous_annotations_title_abstract_mention.txt"
 input_file_ambiguous = "ambiguous_names_and_annotations.txt"
 
 
-# firstreads annotation types that are ambiguous (i.e. have more than one synonym)
+# first reads annotation types that are ambiguous (i.e. have more than one synonym)
 print("Reading ambiguous annotations list...")
 f_in = open(input_file_ambiguous, "r")
 

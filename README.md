@@ -31,6 +31,12 @@
 
 ### * *semantic_permanence_names.py*: mention ambiguity analysis
 
+#### To predict ambiguous annotations:
+
+### * *add_title_and_abstract2*.py
+### * *filter_by_mention.py*: select pairs of connected PMIDs that share ambiguous mentions
+### * *disambiguator.py*: count annotations in the neighborhood of a record with an ambiguous mention
+
 #### Additional files:
 
 ### * *create_second_degree_network.py*: creates the second-degree citation network

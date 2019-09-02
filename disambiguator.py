@@ -59,7 +59,6 @@ for line in f_in:
         pmid2 = data[1]
         # check if the first PMID is annotated
         if pmid1 in pmids:
-            #print(pmid1)
             if pmid2 in annotations_pmid.keys():
                 if pmid1 in annotations_network.keys():
                     annotations_network[pmid1] = annotations_network[pmid1] + "|" + annotations_pmid[pmid2]
@@ -95,9 +94,6 @@ for line in f_in:
                 else:
                     annotation_counts[annotation] = 1
         max_count = 0
-        #for annotation in annotation_counts:
-        #    print(annotation + "\t" + str(annotation_counts[annotation]))
-
         # pick the most frequent annotation as prediction
         if len(annotation_counts.keys()) > 0:
             max_value = max(annotation_counts.values())
@@ -109,7 +105,6 @@ for line in f_in:
                     semantic_permanence_correct_count += 1
                 else:
                     semantic_permanence_incorrect_count += 1
-            #print(str(semantic_permanence_correct_count) + "//" + str(semantic_permanence_incorrect_count))
 
 print("Total correct predictions:" + str(semantic_permanence_correct_count))
 print("Total incorrect predictions:" + str(semantic_permanence_incorrect_count))
