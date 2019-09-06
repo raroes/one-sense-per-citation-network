@@ -40,6 +40,8 @@ discard_citation_counter = 0
 matched_counter = 0
 discard_counter = 0
 found1 = 0
+mismatching_citation_pmids = set()
+matching_citation_pmids = set()
 for line in f_in:
     data = line[:-1].split("\t")
     pmid1 = data[0]
@@ -81,6 +83,8 @@ for line in f_in:
                                     f_out.write("matching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\n")
                                     #print(annotation1 + "::" + str(ambiguous_pairs_annotation1) + "===" + line[:-1])
                                     matching_counter += 1
+                                    matching_citation_pmids.add(pmid1)
+                                    matching_citation_pmids.add(pmid2)
                 self_ambiguous = 0
                 for ambiguous_annotation in ambiguous_pairs_annotation1:
                     if ambiguous_annotation != annotation1:
@@ -100,6 +104,8 @@ for line in f_in:
                                     f_out.write("matching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\n")
                                     #print(annotation1 + "::" + str(ambiguous_pairs_annotation1) + "---" + line[:-1])
                                     matching_counter += 1
+                                    matching_citation_pmids.add(pmid1)
+                                    matching_citation_pmids.add(pmid2)
     # next it looks for mismatches
     # for that first it looks at the annotation types for which the annotation is mutually ambiguous
     # then it checks if any of them exists in the other record (and not in the current record)
@@ -124,6 +130,8 @@ for line in f_in:
                                                    f_out.write("mismatching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\t" + ambiguous_annotation + "\n")
                                                    #print(annotation1 + "_______" + str(ambiguous_annotation) + "___" + name + "===" + line[:-1])
                                                    mismatching_counter += 1
+                                                   mismatching_citation_pmids.add(pmid1)
+                                                   mismatching_citation_pmids.add(pmid2)
     for annotation2 in annotations2:
         found = 0
         if annotation2 in ambiguous_annotation_pairs.keys():
@@ -145,11 +153,15 @@ for line in f_in:
                                                    f_out.write("mismatching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation2 + "\t" + ambiguous_annotation + "\n")
                                                    #print(annotation2 + "______" + str(ambiguous_annotation) + "___" + name + "---" + line[:-1])
                                                    mismatching_counter += 1
+                                                   mismatching_citation_pmids.add(pmid1)
+                                                   mismatching_citation_pmids.add(pmid2)
 
+citation_counter = len(matching_citation_pmids.union(mismatching_citation_pmids))
+print("Total records with matching and mismatching annotations: " + str(citation_counter))
+matching_citation_counter = len(matching_citation_pmids)
 
-#print("Number of unique citations matched / mismatched: " + str(output_counter))
-print("==>Number of matching annotation pairs: " + str(matching_counter) + " (" + str(100 * matching_counter/(matching_counter + mismatching_counter)) + "%)") # based on " + str(matching_citation_counter) + " citations")
-print("==>Number of mismatching annotations pairs: " + str(mismatching_counter) + " (" + str(100 * mismatching_counter/(matching_counter + mismatching_counter)) + "%)") # based on " + str(mismatching_citation_counter) + " citations")
+print("==>Number of matching annotation pairs: " + str(matching_counter) + " (" + str(100 * matching_counter/(matching_counter + mismatching_counter)) + "%) based on " + str(matching_citation_counter) + " records")
+mismatching_citation_counter = len(mismatching_citation_pmids)
+print("==>Number of mismatching annotations pairs: " + str(mismatching_counter) + " (" + str(100 * mismatching_counter/(matching_counter + mismatching_counter)) + "%) based on " + str(mismatching_citation_counter) + " records")
 print("Number of matching plus mismatching: " + str(matching_counter + mismatching_counter))
-#print("Number of discarded citations: " + str(discard_counter))
 
