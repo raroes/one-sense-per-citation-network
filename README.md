@@ -33,9 +33,14 @@
 
 #### To predict ambiguous annotations:
 
-### * *add_title_and_abstract2*.py
+### * *add_title_and_abstract2.py*
 ### * *filter_by_mention.py*: select pairs of connected PMIDs that share ambiguous mentions
 ### * *disambiguator.py*: count annotations in the neighborhood of a record with an ambiguous mention
+
+#### To expand large networks to second degree neighbors:
+
+### * *sort_citations.py*
+### * *expand_citations.py*
 
 #### Additional files:
 
