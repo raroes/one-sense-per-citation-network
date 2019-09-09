@@ -4,6 +4,8 @@
 
 import sys
 
+unidirectional_network = 1
+
 # the citation file is a parameter that can be changed
 if len(sys.argv) > 1:
     input_citation_file = sys.argv[1]
@@ -51,7 +53,7 @@ annotated_connection_count = {}
 for line in f_in:
     data = line[:-1].split("\t")
     counter+=1
-    if counter / 1000000 == int(counter / 1000000):
+    if counter / 10000000 == int(counter / 10000000):
         print("Read " + str(counter) + " connections.")
     if len(data) > 1:
         # for each pair of PMIDs
@@ -64,12 +66,13 @@ for line in f_in:
                     annotations_network[pmid1] = annotations_network[pmid1] + "|" + annotations_pmid[pmid2]
                 else:
                     annotations_network[pmid1] = annotations_pmid[pmid2]
-        if pmid2 in pmids:
-            if pmid1 in annotations_pmid.keys():
-                if pmid2 in annotations_network.keys():
-                    annotations_network[pmid2] = annotations_network[pmid2] + "|" + annotations_pmid[pmid1]
-                else:
-                    annotations_network[pmid2] = annotations_pmid[pmid1]
+        if unidirectional_network == 0:        
+            if pmid2 in pmids:
+                if pmid1 in annotations_pmid.keys():
+                    if pmid2 in annotations_network.keys():
+                        annotations_network[pmid2] = annotations_network[pmid2] + "|" + annotations_pmid[pmid1]
+                    else:
+                        annotations_network[pmid2] = annotations_pmid[pmid1]
 
 # reads all the ambiguous mentions
 f_in = open(input_file, "r")

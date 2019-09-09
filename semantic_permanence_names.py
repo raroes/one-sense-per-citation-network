@@ -81,7 +81,6 @@ for line in f_in:
                                 if re.search(pattern, "  " + title2.lower() + " ") or re.search(pattern, "  " + abstract2.lower() + " "):
                                     found1 = 1
                                     f_out.write("matching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\n")
-                                    #print(annotation1 + "::" + str(ambiguous_pairs_annotation1) + "===" + line[:-1])
                                     matching_counter += 1
                                     matching_citation_pmids.add(pmid1)
                                     matching_citation_pmids.add(pmid2)
@@ -102,11 +101,10 @@ for line in f_in:
                                 if re.search(pattern, "  " + title2.lower() + " ") or re.search(pattern, "  " + abstract2.lower() + " "):
                                     found1 = 1
                                     f_out.write("matching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\n")
-                                    #print(annotation1 + "::" + str(ambiguous_pairs_annotation1) + "---" + line[:-1])
                                     matching_counter += 1
                                     matching_citation_pmids.add(pmid1)
                                     matching_citation_pmids.add(pmid2)
-    # next it looks for mismatches
+    # nhen it looks for mismatches
     # for that first it looks at the annotation types for which the annotation is mutually ambiguous
     # then it checks if any of them exists in the other record (and not in the current record)
     for annotation1 in annotations1:
@@ -128,7 +126,6 @@ for line in f_in:
                                                if re.search(pattern, "  " + title2.lower() + " ") or re.search(pattern, "  " + abstract2.lower() + " "):
                                                    found = 1
                                                    f_out.write("mismatching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\t" + ambiguous_annotation + "\n")
-                                                   #print(annotation1 + "_______" + str(ambiguous_annotation) + "___" + name + "===" + line[:-1])
                                                    mismatching_counter += 1
                                                    mismatching_citation_pmids.add(pmid1)
                                                    mismatching_citation_pmids.add(pmid2)
@@ -151,7 +148,6 @@ for line in f_in:
                                                if re.search(pattern, "  " + title2.lower() + " ") or re.search(pattern, "  " + abstract2.lower() + " "):
                                                    found = 1
                                                    f_out.write("mismatching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation2 + "\t" + ambiguous_annotation + "\n")
-                                                   #print(annotation2 + "______" + str(ambiguous_annotation) + "___" + name + "---" + line[:-1])
                                                    mismatching_counter += 1
                                                    mismatching_citation_pmids.add(pmid1)
                                                    mismatching_citation_pmids.add(pmid2)

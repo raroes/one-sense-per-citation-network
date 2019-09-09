@@ -65,7 +65,6 @@ for line in f_in:
                     discard_counter += 1
                 else:
                     f_out.write("matching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\n")
-                    #print(annotation1 + "::" + str(ambiguous_pairs_annotation1) + "===" + line[:-1])
                     matching_counter += 1
                     matching_citation_pmids.add(pmid1)
                     matching_citation_pmids.add(pmid2)
@@ -78,7 +77,6 @@ for line in f_in:
                     discard_citation_counter += 1
                 else:
                     f_out.write("matching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\n")
-                    #print(annotation1 + "::" + str(ambiguous_pairs_annotation1) + "---" + line[:-1])
                     matching_counter += 1
                     matching_citation_pmids.add(pmid1)
                     matching_citation_pmids.add(pmid2)
@@ -97,7 +95,6 @@ for line in f_in:
                                 if found == 0:
                                     found = 1
                                     f_out.write("mismatching" + "\t" + pmid1 + "\t" + pmid2 + "\t" + annotation1 + "\t" + ambiguous_annotation + "\n")
-                                    #print(annotation1 + "::" + str(ambiguous_annotation) + "=__=" + line[:-1])
                                     mismatching_counter += 1
                                     mismatching_citation_pmids.add(pmid1)
                                     mismatching_citation_pmids.add(pmid2)

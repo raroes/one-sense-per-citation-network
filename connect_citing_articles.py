@@ -46,7 +46,7 @@ f_in = open(input_citation_file)
 for line in f_in:
     data = line[:-1].split("\t")
     counter+=1
-    if counter / 1000000 == int(counter / 1000000):
+    if counter / 10000000 == int(counter / 10000000):
         print("Read " + str(counter) + " connections, " + str(connection_counter) + " matched to annotated references")
     if len(data) > 1:
         # for each pair of PMIDs
@@ -63,7 +63,7 @@ for line in f_in:
                     pmid_connections[pmid1].append(pmid2)
 
 print("Number of pairs read: " + str(counter))
-print("Number of annotated pairs found: " + str(connection_counter))
+print("Number of ambiguous annotated pairs found: " + str(connection_counter))
 
 # Write as output the pairs of connected PMIDs and their corresponding annotations
 print("Writing output...")
