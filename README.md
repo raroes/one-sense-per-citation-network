@@ -2,6 +2,13 @@
 
 Scripts to analyze the meaning of ambiguous names across citations
 
+Author: Raul Rodriguez-Esteban
+
+Reference:
+Rodriguez-Esteban R. Semantic persistence of ambiguous biomedical names in the citation network. Bioinformatics. 2020 Apr 1;36(7):2224-2228. 
+
+Paper link: https://academic.oup.com/bioinformatics/article-lookup/doi/10.1093/bioinformatics/btz923
+
 For the main analysis the order of execution of the scripts is the following, first:
 
 * *read_ambiguous_gene_annotation_synonyms.py*
